@@ -37,7 +37,11 @@ public class Elf
     {
         int attackValue = this.GetAttackvalue();
         int defenseValue = elf.GetDefensevalue();
-        elf.Health -= attackValue - defenseValue; //La vida disminuye según la diferencia del ataque del atacante y la defensa del que lo recibe
+        if (attackValue > 0) //Si el valor de ataque es mayor a 0 se disminuye la vida del personaje
+        {
+            elf.Health -= attackValue - defenseValue; //La vida disminuye según la diferencia del ataque del atacante y la defensa del que lo recibe
+        }
+
         return elf.Health; //Devuelve el valor de la vida
     }
     public int Heal()
