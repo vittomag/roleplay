@@ -15,34 +15,44 @@ public class Elf
 
     public int GetAttackvalue()
     {
-        if (this.Bow != null)
+        if (this.Bow != null) //Verifica si tiene el elemento Bow 
         {
             int attack = Bow.AttackValue;
-            return attack;
+            return attack; //Devuelve el valor de ataque
         }
 
-        return 0;
+        return 0; //Si no lo tiene devuelve 0
     }
     public int GetDefensevalue()
     {
-        
-        int defense = Ring.DefenseValue;
-        return defense;
+        if (this.Ring != null) //Verifica si tiene el elemento Ring
+        {
+            int defense = Ring.DefenseValue;
+            return defense; //Si lo tiene devuelve el valor de la defensa
+        }
+
+        return 0; //Si no lo tiene devuelve 0
     }
-    public int AttackOther(Elf elf)
+    public int AttackOther(Elf elf) //Cuando sucede la pelea el valor de la vida va a disminuir
     {
         int attackValue = this.GetAttackvalue();
         int defenseValue = elf.GetDefensevalue();
-        elf.Health -= attackValue - defenseValue;
-        return elf.Health;
+        elf.Health -= attackValue - defenseValue; //La vida disminuye según la diferencia del ataque del atacante y la defensa del que lo recibe
+        return elf.Health; //Devuelve el valor de la vida
     }
     public int Heal()
     {
-        if (Health < 100)
+        if (this.Health < 100) //Si la vida es menor a 100 el personaje se va a poder curar
         {
-            this.Health += Health/2;
+            this.Health += this.Health/2; 
+            if (this.Health > 100) //Si al curarse se excede a 100 que es el valor máximo
+            {
+                int resta = this.Health - 100; //Se calcula la diferencia
+                this.Health -= resta; //Se la resta para que pueda quedar al máximo de la vida
+            }
         }
-        return Health;
+        
+        return this.Health;
     }
 
 }
