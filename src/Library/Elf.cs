@@ -37,7 +37,11 @@ public class Elf
     {
         int attackValue = this.GetAttackvalue();
         int defenseValue = elf.GetDefensevalue();
-        elf.Health -= attackValue - defenseValue; //La vida disminuye según la diferencia del ataque del atacante y la defensa del que lo recibe
+        if (attackValue > 0) //Si el valor de ataque es mayor a 0 se disminuye la vida del personaje
+        {
+            elf.Health -= attackValue - defenseValue; //La vida disminuye según la diferencia del ataque del atacante y la defensa del que lo recibe
+        }
+
         return elf.Health; //Devuelve el valor de la vida
     }
     public int Heal()
@@ -47,12 +51,11 @@ public class Elf
             this.Health += this.Health/2; 
             if (this.Health > 100) //Si al curarse se excede a 100 que es el valor máximo
             {
-                int resta = this.Health - 100; //Se calcula la diferencia
-                this.Health -= resta; //Se la resta para que pueda quedar al máximo de la vida
+                this.Health = 100; //Pone la vida al 100
             }
         }
         
-        return this.Health;
+        return this.Health; //Devuelve el valor de la vida
     }
 
 }
