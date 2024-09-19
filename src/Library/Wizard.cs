@@ -58,8 +58,7 @@ public class Wizard
             this.Health += 50; 
             if (this.Health > 100)
             {
-                int resta = this.Health - 100;
-                this.Health -= resta;
+                this.Health = 100;
             }
         }
         
