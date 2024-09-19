@@ -51,8 +51,7 @@ public class Dwarf
             this.Health += this.Health/2; 
             if (this.Health > 100) //Si al curarse se excede a 100 que es el valor máximo
             {
-                int resta = this.Health - 100; //Se calcula la diferencia
-                this.Health -= resta; //Se la resta para que pueda quedar al máximo de la vida
+                this.Health = 100; //Se pone la vida al 100 (el máximo)
             }
         }
         
