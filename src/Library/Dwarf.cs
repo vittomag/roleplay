@@ -17,8 +17,13 @@ public class Dwarf
 
     public int GetAttackvalue()
     {
-        int attack = Hammer.AttackValue;
-        return attack;
+        if (this.Hammer != null) //Verifica si tiene el elemento Bow 
+        {
+            int attack = Hammer.AttackValue;
+            return attack; //Devuelve el valor de ataque
+        }
+
+        return 0; //Si no lo tiene devuelve 0
     }
 
     public int GetDefensevalue()
