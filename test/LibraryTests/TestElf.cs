@@ -1,7 +1,7 @@
 namespace LibraryTests;
 using Library;
 
-public class Tests
+public class TestElf
 {
 
     [Test]
