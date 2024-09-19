@@ -19,27 +19,27 @@ public class Wizard
     
     public int GetAttackValue()
     {
-        if (this.SpellBook != null)
+        if (this.SpellBook != null) // verifica si el personaje tiene el SpellBook 
         {
-            int attack = SpellBook.AttackValue;
-            return attack;
+            int attack = SpellBook.AttackValue; // calcula el valor de ataque
+            return attack; // retorna el valor de ataque
         }
-        else
+        else 
         {
-            return 10;
+            return 10; // sino devuelve un valor predeterminado
         }
     }
     
     public int GetDefenseValue()
     {
-        if (this.Cloak != null)
+        if (this.Cloak != null) // verifica si el personaje tiene el Cloak
         {
-            int defense = Cloak.DefenseValue;
-            return defense;
+            int defense = Cloak.DefenseValue; // calcula el valor de la defensa
+            return defense; // retorna el valor de la defensa
         }
         else
         {
-            return 0;
+            return 0; // sino devuelve un valor predeterminado
         }
     }
     
@@ -47,23 +47,23 @@ public class Wizard
     {
         int attackValue = this.GetAttackValue();
         int defenseValue = wizard.GetDefenseValue();
-        wizard.Health -= attackValue - defenseValue;
-        return wizard.Health;
+        wizard.Health -= attackValue - defenseValue; // calcula el daño que le hace un mago a otro basandose en su ataque y defensa respectivamente
+        return wizard.Health; // retorna la vida que le queda al mago que es atacado 
     }
     
     public int Heal(Wizard wizard)
     {
-        if (this.Health < 100)
+        if (this.Health < 100) // verifica si la vida del mago es menor a 100
         {
-            this.Health += 50; 
-            if (this.Health > 100)
+            this.Health += 50; // si es asi suma 50 punto a su vida
+            if (this.Health > 100) // verifica si la vida despues de la curacion es mayor a 100
             {
-                int resta = this.Health - 100;
+                int resta = this.Health - 100; // si lo es calcula cual seria la vida correcta
                 this.Health -= resta;
             }
         }
         
-        return this.Health;
+        return this.Health; // devuelve la vida
     }
     
 }
