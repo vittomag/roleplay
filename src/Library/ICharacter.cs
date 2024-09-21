@@ -1,8 +1,11 @@
 ﻿namespace Library;
 
 public interface ICharacter
-{ 
-    int Health { get; set; }
+{
+    string Name { get; set; }
+    int Health { get;}
+    int AttackValue { get;}
+    int DefenseValue { get; }
     void AttackOther(ICharacter attacked);
-    void Heal(ICharacter cured);
+    void Heal();
 }
