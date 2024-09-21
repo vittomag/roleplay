@@ -51,11 +51,12 @@ public class Elf
             this.Health += this.Health/2; 
             if (this.Health > 100) //Si al curarse se excede a 100 que es el valor máximo
             {
-                this.Health = 100; //Pone la vida al 100
+                int resta = this.Health - 100; //Se calcula la diferencia
+                this.Health -= resta; //Se la resta para que pueda quedar al máximo de la vida
             }
         }
         
-        return this.Health; //Devuelve el valor de la vida
+        return this.Health;
     }
 
 }
