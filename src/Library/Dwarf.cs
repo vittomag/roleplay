@@ -35,8 +35,8 @@ public class Dwarf : ICharacter
     
     public void AttackOther(ICharacter character) //Cuando sucede la pelea el valor de la vida va a disminuir
     {
-        int attackValue = this.AttackValue;
-        int defenseValue = character.DefenseValue;
+        int attackValue = character.AttackValue;
+        int defenseValue = this.DefenseValue;
             if (attackValue > 0) //Si el valor de ataque es mayor a 0 se disminuye la vida del personaje
             {
                 character.Health -= attackValue - defenseValue; //La vida disminuye según la diferencia del ataque del atacante y la defensa del que lo recibe
