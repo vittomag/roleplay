@@ -17,52 +17,40 @@ public class Wizard : ICharacter
     public SpellBook SpellBook { get; set; }
     public Cloak Cloak { get; set; }
     
-    public int GetAttackValue()
+    public int AttackValue
     {
-        if (this.SpellBook != null) // verifica si el personaje tiene el SpellBook 
+        get
         {
-            int attack = SpellBook.AttackValue; // calcula el valor de ataque
-            return attack; // retorna el valor de ataque
-        }
-        else 
-        {
-            return 10; // sino devuelve un valor predeterminado
+            return SpellBook.AttackValue + Cloak.AttackValue;
         }
     }
     
-    public int GetDefenseValue()
+    public int DefenseValue
     {
-        if (this.Cloak != null) // verifica si el personaje tiene el Cloak
+        get
         {
-            int defense = Cloak.DefenseValue; // calcula el valor de la defensa
-            return defense; // retorna el valor de la defensa
-        }
-        else
-        {
-            return 0; // sino devuelve un valor predeterminado
+            return Cloak.DefenseValue + SpellBook.DefenseValue;
         }
     }
     
-    public int AttackOther(Wizard wizard) 
+    public void AttackOther(ICharacter character) 
     {
-        int attackValue = this.GetAttackValue();
-        int defenseValue = wizard.GetDefenseValue();
-        wizard.Health -= attackValue - defenseValue; // calcula el daño que le hace un mago a otro basandose en su ataque y defensa respectivamente
-        return wizard.Health; // retorna la vida que le queda al mago que es atacado 
+        int attackValue =  character.AttackValue;
+        int defenseValue = this.DefenseValue;
+        this.Health -= attackValue - defenseValue; // calcula el daño que le hace un mago a otro basandose en su ataque y defensa respectivamente
+ 
     }
     
-    public int Heal(Wizard wizard)
+    public void Heal()
     {
-        if (this.Health < 100) // verifica si la vida del mago es menor a 100
+        if (this.Health < 100) //Si la vida es menor a 100 el personaje se va a poder curar
         {
-            this.Health += 50; // si es asi suma 50 punto a su vida
-            if (this.Health > 100) // verifica si la vida despues de la curacion es mayor a 100
+            this.Health += this.Health/2;
+            if (this.Health > 100) //Si al curarse se excede a 100 que es el valor máximo
             {
-                this.Health = 100;
+                this.Health = 100; //Queda al máximo de la vida
             }
         }
-        
-        return this.Health; // devuelve la vida
     }
     
 }
