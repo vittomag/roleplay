@@ -1,6 +1,6 @@
 ﻿namespace Library;
 
-public class Cloak
+public class Cloak : IItem
 {
     public string Name {get; set;}
     public int DefenseValue{get; set;}
