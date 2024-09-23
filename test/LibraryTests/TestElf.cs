@@ -54,6 +54,26 @@ public class TestElf
         elfo.AttackOther(dwarf);
         Assert.AreEqual(elfo.Health, expectedhealth);
     }
+    
+    [Test]
+    public void TestAttackWizard()
+    {
+        const string name = "Elfo";
+        Elf elfo = new Elf(name);
+        Bow bow = new Bow("Bow");
+        Ring ring = new Ring("Ring");
+        elfo.Bow = bow;
+        elfo.Ring = ring;
+        const string name1 = "Mago";
+        Wizard wizard = new Wizard(name1);
+        SpellBook spellBook = new SpellBook("SpellBook");
+        Cloak cloak = new Cloak("Cloak");
+        wizard.SpellBook = spellBook;
+        wizard.Cloak = cloak;
+        int expectedhealth = elfo.Health - (spellBook.AttackValue - ring.DefenseValue);
+        elfo.AttackOther(wizard);
+        Assert.AreEqual(elfo.Health, expectedhealth);
+    }
 
 
 }
