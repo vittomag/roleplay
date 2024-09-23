@@ -1,10 +1,10 @@
 namespace Library;
 
-public class Shield
+public class Shield : IItem
 {
-    public int AttackValue { get; set; }
+    public int AttackValue { get; }
     
-    public int DefenseValue { get; set; }
+    public int DefenseValue { get; }
     
     public string Name { get; set; }
 

@@ -1,9 +1,12 @@
 namespace Library;
 using System.Collections;
-public class Dwarf
+public class Dwarf : ICharacter
 {
+
     public string Name{get; set;} 
     public int Health{get; set;}
+    
+    
     public Dwarf(string name) 
     { 
         this.Name = name;
@@ -13,38 +16,35 @@ public class Dwarf
     public Hammer Hammer { get; set; }
     public Shield Shield { get; set; }
 
-    public int GetAttackvalue()
+    public int AttackValue
     {
-        if (this.Hammer != null) //Verifica si tiene el elemento Hammer 
+        get
         {
-            int attack = Hammer.AttackValue;
-            return attack; //Devuelve el valor de ataque
+            return Hammer.AttackValue;
         }
-
-        return 0; //Si no lo tiene devuelve 0
+        
     }
-    public int GetDefensevalue()
+
+    public int DefenseValue
     {
-        if (this.Shield != null) //Verifica si tiene el elemento Shield
+        get
         {
-            int defense = Shield.DefenseValue;
-            return defense; //Si lo tiene devuelve el valor de la defensa
+            return Shield.DefenseValue;
         }
-
-        return 0; //Si no lo tiene devuelve 0
     }
-    public int AttackOther(Dwarf dwarf) //Cuando sucede la pelea el valor de la vida va a disminuir
+    
+    public void AttackOther(ICharacter character) //Cuando sucede la pelea el valor de la vida va a disminuir
     {
-        int attackValue = this.GetAttackvalue();
-        int defenseValue = dwarf.GetDefensevalue();
-        if (attackValue > 0) //Si el valor de ataque es mayor a 0 se disminuye la vida del personaje
-        {
-            dwarf.Health -= attackValue - defenseValue; //La vida disminuye según la diferencia del ataque del atacante y la defensa del que lo recibe
-        }
-
-        return dwarf.Health; //Devuelve el valor de la vida
+        int attackValue = this.AttackValue;
+        int defenseValue = character.DefenseValue;
+            if (attackValue > 0) //Si el valor de ataque es mayor a 0 se disminuye la vida del personaje
+            {
+                character.Health -= attackValue - defenseValue; //La vida disminuye según la diferencia del ataque del atacante y la defensa del que lo recibe
+            }
+            
     }
-    public int Heal()
+
+    public void Heal()
     {
         if (this.Health < 100) //Si la vida es menor a 100 el personaje se va a poder curar
         {
@@ -55,7 +55,6 @@ public class Dwarf
             }
         }
         
-        return this.Health;
     }
 
 }
