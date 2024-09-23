@@ -1,6 +1,6 @@
 ﻿namespace Library;
 
-public class SpellBook
+public class SpellBook : IItem
 {
     public string Name {get; set;}
     public int AttackValue {get; set;}

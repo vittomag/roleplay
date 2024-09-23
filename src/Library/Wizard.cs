@@ -2,7 +2,7 @@
 
 namespace Library;
 
-public class Wizard
+public class Wizard : ICharacter
 { 
     public string Name{get; set;} 
     
